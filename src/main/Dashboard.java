@@ -30,19 +30,24 @@ public class Dashboard extends javax.swing.JFrame {
 
         NavBar = new javax.swing.JPanel();
         Logo = new javax.swing.JLabel();
+        Message = new javax.swing.JLabel();
+        Avatar = new javax.swing.JLabel();
         Menu = new javax.swing.JPanel();
         Dashboard = new javax.swing.JLabel();
         Contacts = new javax.swing.JLabel();
         Transactions = new javax.swing.JLabel();
         Profile = new javax.swing.JLabel();
         Header = new javax.swing.JPanel();
-        PageName = new javax.swing.JLabel();
         infoBlockGreen = new javax.swing.JLabel();
         infoBlockBlue = new javax.swing.JLabel();
         infoBlockPurple = new javax.swing.JLabel();
+        ActionBar = new javax.swing.JPanel();
+        PageName = new javax.swing.JLabel();
+        Balance = new javax.swing.JLabel();
+        Send = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setBackground(new java.awt.Color(238, 238, 238));
+        setBackground(new java.awt.Color(241, 241, 241));
         setBounds(new java.awt.Rectangle(0, 0, 0, 0));
         setMaximumSize(new java.awt.Dimension(1600, 900));
         setMinimumSize(new java.awt.Dimension(1600, 900));
@@ -56,6 +61,12 @@ public class Dashboard extends javax.swing.JFrame {
         NavBar.setPreferredSize(new java.awt.Dimension(240, 810));
 
         Logo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/res/Logo.png"))); // NOI18N
+
+        Message.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        Message.setForeground(new java.awt.Color(255, 255, 255));
+        Message.setText("Welcome Shimal");
+
+        Avatar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/res/UI/menu/Avatar.png"))); // NOI18N
 
         Menu.setBackground(new java.awt.Color(38, 50, 56));
         Menu.setMaximumSize(new java.awt.Dimension(240, 810));
@@ -73,13 +84,10 @@ public class Dashboard extends javax.swing.JFrame {
         Menu.setLayout(MenuLayout);
         MenuLayout.setHorizontalGroup(
             MenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(MenuLayout.createSequentialGroup()
-                .addGroup(MenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(Contacts)
-                    .addComponent(Dashboard)
-                    .addComponent(Transactions)
-                    .addComponent(Profile))
-                .addContainerGap(464, Short.MAX_VALUE))
+            .addComponent(Contacts)
+            .addComponent(Dashboard)
+            .addComponent(Transactions)
+            .addComponent(Profile)
         );
         MenuLayout.setVerticalGroup(
             MenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -103,8 +111,17 @@ public class Dashboard extends javax.swing.JFrame {
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(Menu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addGroup(NavBarLayout.createSequentialGroup()
-                .addGap(45, 45, 45)
-                .addComponent(Logo)
+                .addGroup(NavBarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(NavBarLayout.createSequentialGroup()
+                        .addGap(45, 45, 45)
+                        .addComponent(Logo))
+                    .addGroup(NavBarLayout.createSequentialGroup()
+                        .addGap(70, 70, 70)
+                        .addGroup(NavBarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(Message)
+                            .addGroup(NavBarLayout.createSequentialGroup()
+                                .addGap(17, 17, 17)
+                                .addComponent(Avatar)))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         NavBarLayout.setVerticalGroup(
@@ -112,17 +129,17 @@ public class Dashboard extends javax.swing.JFrame {
             .addGroup(NavBarLayout.createSequentialGroup()
                 .addGap(47, 47, 47)
                 .addComponent(Logo)
-                .addGap(160, 160, 160)
+                .addGap(47, 47, 47)
+                .addComponent(Avatar)
+                .addGap(32, 32, 32)
+                .addComponent(Message)
+                .addGap(51, 51, 51)
                 .addComponent(Menu, javax.swing.GroupLayout.PREFERRED_SIZE, 414, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(215, Short.MAX_VALUE))
+                .addContainerGap(165, Short.MAX_VALUE))
         );
 
         Header.setMaximumSize(new java.awt.Dimension(1240, 185));
         Header.setMinimumSize(new java.awt.Dimension(1240, 185));
-
-        PageName.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        PageName.setForeground(new java.awt.Color(170, 163, 163));
-        PageName.setText("DASHBOARD");
 
         infoBlockGreen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/res/UI/Green-Header.png"))); // NOI18N
 
@@ -134,33 +151,60 @@ public class Dashboard extends javax.swing.JFrame {
         Header.setLayout(HeaderLayout);
         HeaderLayout.setHorizontalGroup(
             HeaderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1240, Short.MAX_VALUE)
-            .addGroup(HeaderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(HeaderLayout.createSequentialGroup()
-                    .addContainerGap()
-                    .addGroup(HeaderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(PageName)
-                        .addGroup(HeaderLayout.createSequentialGroup()
-                            .addComponent(infoBlockGreen)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(infoBlockBlue)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(infoBlockPurple)))
-                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+            .addGroup(HeaderLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(infoBlockGreen)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(infoBlockBlue)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(infoBlockPurple)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         HeaderLayout.setVerticalGroup(
             HeaderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 185, Short.MAX_VALUE)
-            .addGroup(HeaderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(HeaderLayout.createSequentialGroup()
-                    .addContainerGap()
+            .addGroup(HeaderLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(HeaderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(infoBlockGreen)
+                    .addComponent(infoBlockBlue)
+                    .addComponent(infoBlockPurple))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        ActionBar.setMaximumSize(new java.awt.Dimension(1240, 185));
+        ActionBar.setMinimumSize(new java.awt.Dimension(1240, 185));
+
+        PageName.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        PageName.setForeground(new java.awt.Color(170, 163, 163));
+        PageName.setText("DASHBOARD");
+
+        Balance.setIcon(new javax.swing.ImageIcon(getClass().getResource("/res/UI/Balance.png"))); // NOI18N
+
+        Send.setIcon(new javax.swing.ImageIcon(getClass().getResource("/res/UI/Send-Button.png"))); // NOI18N
+
+        javax.swing.GroupLayout ActionBarLayout = new javax.swing.GroupLayout(ActionBar);
+        ActionBar.setLayout(ActionBarLayout);
+        ActionBarLayout.setHorizontalGroup(
+            ActionBarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ActionBarLayout.createSequentialGroup()
+                .addGap(25, 25, 25)
+                .addComponent(PageName)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 807, Short.MAX_VALUE)
+                .addComponent(Balance)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(Send)
+                .addGap(247, 247, 247))
+        );
+        ActionBarLayout.setVerticalGroup(
+            ActionBarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(ActionBarLayout.createSequentialGroup()
+                .addGap(17, 17, 17)
+                .addGroup(ActionBarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(PageName)
-                    .addGap(41, 41, 41)
-                    .addGroup(HeaderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(infoBlockGreen)
-                        .addComponent(infoBlockBlue)
-                        .addComponent(infoBlockPurple))
-                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addGroup(ActionBarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(Send, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(Balance, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -170,13 +214,17 @@ public class Dashboard extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addComponent(NavBar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(32, 32, 32)
-                .addComponent(Header, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(88, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(Header, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(ActionBar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(27, 27, 27)
+                .addContainerGap()
+                .addComponent(ActionBar, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(Header, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
@@ -223,14 +271,19 @@ public class Dashboard extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel ActionBar;
+    private javax.swing.JLabel Avatar;
+    private javax.swing.JLabel Balance;
     private javax.swing.JLabel Contacts;
     private javax.swing.JLabel Dashboard;
     private javax.swing.JPanel Header;
     private javax.swing.JLabel Logo;
     private javax.swing.JPanel Menu;
+    private javax.swing.JLabel Message;
     private javax.swing.JPanel NavBar;
     private javax.swing.JLabel PageName;
     private javax.swing.JLabel Profile;
+    private javax.swing.JLabel Send;
     private javax.swing.JLabel Transactions;
     private javax.swing.JLabel infoBlockBlue;
     private javax.swing.JLabel infoBlockGreen;
