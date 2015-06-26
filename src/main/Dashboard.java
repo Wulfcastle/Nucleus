@@ -30,6 +30,11 @@ public class Dashboard extends javax.swing.JFrame {
 
         NavBar = new javax.swing.JPanel();
         Logo = new javax.swing.JLabel();
+        Menu = new javax.swing.JPanel();
+        Dashboard = new javax.swing.JLabel();
+        Contacts = new javax.swing.JLabel();
+        Transactions = new javax.swing.JLabel();
+        Profile = new javax.swing.JLabel();
         Header = new javax.swing.JPanel();
         PageName = new javax.swing.JLabel();
         infoBlockGreen = new javax.swing.JLabel();
@@ -52,21 +57,64 @@ public class Dashboard extends javax.swing.JFrame {
 
         Logo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/res/Logo.png"))); // NOI18N
 
+        Menu.setBackground(new java.awt.Color(38, 50, 56));
+        Menu.setMaximumSize(new java.awt.Dimension(240, 810));
+        Menu.setMinimumSize(new java.awt.Dimension(240, 810));
+
+        Dashboard.setIcon(new javax.swing.ImageIcon(getClass().getResource("/res/UI/menu/Dashboard-Selected.png"))); // NOI18N
+
+        Contacts.setIcon(new javax.swing.ImageIcon(getClass().getResource("/res/UI/menu/Contacts-Unselected.png"))); // NOI18N
+
+        Transactions.setIcon(new javax.swing.ImageIcon(getClass().getResource("/res/UI/menu/Transactions-Unselected.png"))); // NOI18N
+
+        Profile.setIcon(new javax.swing.ImageIcon(getClass().getResource("/res/UI/menu/Profile-Unselected.png"))); // NOI18N
+
+        javax.swing.GroupLayout MenuLayout = new javax.swing.GroupLayout(Menu);
+        Menu.setLayout(MenuLayout);
+        MenuLayout.setHorizontalGroup(
+            MenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(MenuLayout.createSequentialGroup()
+                .addGroup(MenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(Contacts)
+                    .addComponent(Dashboard)
+                    .addComponent(Transactions)
+                    .addComponent(Profile))
+                .addContainerGap(464, Short.MAX_VALUE))
+        );
+        MenuLayout.setVerticalGroup(
+            MenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(MenuLayout.createSequentialGroup()
+                .addGap(8, 8, 8)
+                .addComponent(Dashboard)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(Contacts, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(Transactions)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(Profile)
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
+
         javax.swing.GroupLayout NavBarLayout = new javax.swing.GroupLayout(NavBar);
         NavBar.setLayout(NavBarLayout);
         NavBarLayout.setHorizontalGroup(
             NavBarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, NavBarLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(Menu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addGroup(NavBarLayout.createSequentialGroup()
-                .addGap(26, 26, 26)
+                .addGap(45, 45, 45)
                 .addComponent(Logo)
-                .addContainerGap(29, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         NavBarLayout.setVerticalGroup(
             NavBarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(NavBarLayout.createSequentialGroup()
-                .addGap(36, 36, 36)
+                .addGap(47, 47, 47)
                 .addComponent(Logo)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(160, 160, 160)
+                .addComponent(Menu, javax.swing.GroupLayout.PREFERRED_SIZE, 414, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(215, Short.MAX_VALUE))
         );
 
         Header.setMaximumSize(new java.awt.Dimension(1240, 185));
@@ -127,11 +175,13 @@ public class Dashboard extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(NavBar, javax.swing.GroupLayout.DEFAULT_SIZE, 900, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
                 .addGap(27, 27, 27)
                 .addComponent(Header, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(688, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(NavBar, javax.swing.GroupLayout.PREFERRED_SIZE, 895, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
@@ -173,10 +223,15 @@ public class Dashboard extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel Contacts;
+    private javax.swing.JLabel Dashboard;
     private javax.swing.JPanel Header;
     private javax.swing.JLabel Logo;
+    private javax.swing.JPanel Menu;
     private javax.swing.JPanel NavBar;
     private javax.swing.JLabel PageName;
+    private javax.swing.JLabel Profile;
+    private javax.swing.JLabel Transactions;
     private javax.swing.JLabel infoBlockBlue;
     private javax.swing.JLabel infoBlockGreen;
     private javax.swing.JLabel infoBlockPurple;
