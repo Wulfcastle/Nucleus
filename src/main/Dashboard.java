@@ -5,6 +5,10 @@
  */
 package main;
 
+import java.awt.Color;
+import java.awt.Point;
+import java.awt.event.MouseEvent;
+import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 
@@ -39,14 +43,23 @@ public class Dashboard extends javax.swing.JFrame {
         Contacts = new javax.swing.JLabel();
         Transactions = new javax.swing.JLabel();
         Profile = new javax.swing.JLabel();
+        SignOut = new javax.swing.JLabel();
         Header = new javax.swing.JPanel();
+        balanceHeader = new javax.swing.JLabel();
+        txtBalance = new javax.swing.JLabel();
         infoBlockGreen = new javax.swing.JLabel();
+        transactionsHeader = new javax.swing.JLabel();
+        txtTransactions = new javax.swing.JLabel();
         infoBlockBlue = new javax.swing.JLabel();
+        contactsHeader = new javax.swing.JLabel();
+        txtContacts = new javax.swing.JLabel();
         infoBlockPurple = new javax.swing.JLabel();
         ActionBar = new javax.swing.JPanel();
         PageName = new javax.swing.JLabel();
+        txtAbsoluteBalance = new javax.swing.JLabel();
         Balance = new javax.swing.JLabel();
         Send = new javax.swing.JLabel();
+        Background = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(241, 241, 241));
@@ -82,14 +95,20 @@ public class Dashboard extends javax.swing.JFrame {
 
         Profile.setIcon(new javax.swing.ImageIcon(getClass().getResource("/res/UI/menu/Profile-Unselected.png"))); // NOI18N
 
+        SignOut.setIcon(new javax.swing.ImageIcon(getClass().getResource("/res/UI/menu/Sign-Out.png"))); // NOI18N
+
         javax.swing.GroupLayout MenuLayout = new javax.swing.GroupLayout(Menu);
         Menu.setLayout(MenuLayout);
         MenuLayout.setHorizontalGroup(
             MenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(Contacts)
-            .addComponent(Dashboard)
-            .addComponent(Transactions)
-            .addComponent(Profile)
+            .addGroup(MenuLayout.createSequentialGroup()
+                .addGroup(MenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(Contacts)
+                    .addComponent(Dashboard)
+                    .addComponent(Transactions)
+                    .addComponent(Profile)
+                    .addComponent(SignOut))
+                .addGap(86, 86, 86))
         );
         MenuLayout.setVerticalGroup(
             MenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -102,6 +121,8 @@ public class Dashboard extends javax.swing.JFrame {
                 .addComponent(Transactions)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(Profile)
+                .addGap(201, 201, 201)
+                .addComponent(SignOut)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
@@ -136,52 +157,70 @@ public class Dashboard extends javax.swing.JFrame {
                 .addGap(32, 32, 32)
                 .addComponent(Message)
                 .addGap(51, 51, 51)
-                .addComponent(Menu, javax.swing.GroupLayout.PREFERRED_SIZE, 414, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(176, Short.MAX_VALUE))
+                .addComponent(Menu, javax.swing.GroupLayout.PREFERRED_SIZE, 433, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(157, Short.MAX_VALUE))
         );
 
         Header.setForeground(new java.awt.Color(255, 51, 51));
         Header.setMaximumSize(new java.awt.Dimension(1240, 185));
         Header.setMinimumSize(new java.awt.Dimension(1240, 185));
+        Header.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        balanceHeader.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        balanceHeader.setForeground(new java.awt.Color(255, 255, 255));
+        balanceHeader.setText("Balance");
+        Header.add(balanceHeader, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, -1, -1));
+
+        txtBalance.setFont(new java.awt.Font("Tahoma", 1, 22)); // NOI18N
+        txtBalance.setForeground(new java.awt.Color(255, 255, 255));
+        txtBalance.setText("R 0.00");
+        Header.add(txtBalance, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 60, -1, -1));
 
         infoBlockGreen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/res/UI/Green-Header.png"))); // NOI18N
+        Header.add(infoBlockGreen, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 11, -1, -1));
+
+        transactionsHeader.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        transactionsHeader.setForeground(new java.awt.Color(255, 255, 255));
+        transactionsHeader.setText("Transactions");
+        Header.add(transactionsHeader, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 30, -1, -1));
+
+        txtTransactions.setFont(new java.awt.Font("Tahoma", 1, 22)); // NOI18N
+        txtTransactions.setForeground(new java.awt.Color(255, 255, 255));
+        txtTransactions.setText("0");
+        Header.add(txtTransactions, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 60, -1, -1));
 
         infoBlockBlue.setIcon(new javax.swing.ImageIcon(getClass().getResource("/res/UI/Blue-Header.png"))); // NOI18N
+        Header.add(infoBlockBlue, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 11, -1, -1));
+
+        contactsHeader.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        contactsHeader.setForeground(new java.awt.Color(255, 255, 255));
+        contactsHeader.setText("Contacts");
+        Header.add(contactsHeader, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 30, -1, -1));
+
+        txtContacts.setFont(new java.awt.Font("Tahoma", 1, 22)); // NOI18N
+        txtContacts.setForeground(new java.awt.Color(255, 255, 255));
+        txtContacts.setText("0");
+        Header.add(txtContacts, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 60, -1, -1));
 
         infoBlockPurple.setIcon(new javax.swing.ImageIcon(getClass().getResource("/res/UI/Purple-Header.png"))); // NOI18N
-
-        javax.swing.GroupLayout HeaderLayout = new javax.swing.GroupLayout(Header);
-        Header.setLayout(HeaderLayout);
-        HeaderLayout.setHorizontalGroup(
-            HeaderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(HeaderLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(infoBlockGreen)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(infoBlockBlue)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(infoBlockPurple)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        HeaderLayout.setVerticalGroup(
-            HeaderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(HeaderLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(HeaderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(infoBlockGreen)
-                    .addComponent(infoBlockBlue)
-                    .addComponent(infoBlockPurple))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
+        Header.add(infoBlockPurple, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 11, -1, -1));
 
         ActionBar.setMaximumSize(new java.awt.Dimension(1240, 185));
         ActionBar.setMinimumSize(new java.awt.Dimension(1240, 185));
+        ActionBar.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         PageName.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         PageName.setForeground(new java.awt.Color(170, 163, 163));
         PageName.setText("DASHBOARD");
+        ActionBar.add(PageName, new org.netbeans.lib.awtextra.AbsoluteConstraints(25, 17, -1, -1));
+
+        txtAbsoluteBalance.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
+        txtAbsoluteBalance.setForeground(new java.awt.Color(255, 255, 255));
+        txtAbsoluteBalance.setText("0 ZAR");
+        ActionBar.add(txtAbsoluteBalance, new org.netbeans.lib.awtextra.AbsoluteConstraints(1050, 20, -1, 30));
 
         Balance.setIcon(new javax.swing.ImageIcon(getClass().getResource("/res/UI/Balance.png"))); // NOI18N
+        ActionBar.add(Balance, new org.netbeans.lib.awtextra.AbsoluteConstraints(949, 17, -1, 34));
 
         Send.setIcon(new javax.swing.ImageIcon(getClass().getResource("/res/UI/Send-Button.png"))); // NOI18N
         Send.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -189,31 +228,9 @@ public class Dashboard extends javax.swing.JFrame {
                 SendMouseClicked(evt);
             }
         });
+        ActionBar.add(Send, new org.netbeans.lib.awtextra.AbsoluteConstraints(1111, 17, -1, -1));
 
-        javax.swing.GroupLayout ActionBarLayout = new javax.swing.GroupLayout(ActionBar);
-        ActionBar.setLayout(ActionBarLayout);
-        ActionBarLayout.setHorizontalGroup(
-            ActionBarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ActionBarLayout.createSequentialGroup()
-                .addGap(25, 25, 25)
-                .addComponent(PageName)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 807, Short.MAX_VALUE)
-                .addComponent(Balance)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(Send)
-                .addGap(247, 247, 247))
-        );
-        ActionBarLayout.setVerticalGroup(
-            ActionBarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(ActionBarLayout.createSequentialGroup()
-                .addGap(17, 17, 17)
-                .addGroup(ActionBarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(PageName)
-                    .addGroup(ActionBarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(Send, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(Balance, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
+        Background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/res/Raw.gif"))); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -221,22 +238,29 @@ public class Dashboard extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(NavBar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(32, 32, 32)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(Header, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(ActionBar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(32, 32, 32)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(Header, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(ActionBar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(Background, javax.swing.GroupLayout.PREFERRED_SIZE, 1362, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(ActionBar, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(Header, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(NavBar, javax.swing.GroupLayout.PREFERRED_SIZE, 895, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(ActionBar, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(Header, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(310, 310, 310)
+                        .addComponent(Background))
+                    .addComponent(NavBar, javax.swing.GroupLayout.PREFERRED_SIZE, 895, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
@@ -286,6 +310,7 @@ public class Dashboard extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel ActionBar;
     private javax.swing.JLabel Avatar;
+    private javax.swing.JLabel Background;
     private javax.swing.JLabel Balance;
     private javax.swing.JLabel Contacts;
     private javax.swing.JLabel Dashboard;
@@ -297,9 +322,17 @@ public class Dashboard extends javax.swing.JFrame {
     private javax.swing.JLabel PageName;
     private javax.swing.JLabel Profile;
     private javax.swing.JLabel Send;
+    private javax.swing.JLabel SignOut;
     private javax.swing.JLabel Transactions;
+    private javax.swing.JLabel balanceHeader;
+    private javax.swing.JLabel contactsHeader;
     private javax.swing.JLabel infoBlockBlue;
     private javax.swing.JLabel infoBlockGreen;
     private javax.swing.JLabel infoBlockPurple;
+    private javax.swing.JLabel transactionsHeader;
+    private javax.swing.JLabel txtAbsoluteBalance;
+    private javax.swing.JLabel txtBalance;
+    private javax.swing.JLabel txtContacts;
+    private javax.swing.JLabel txtTransactions;
     // End of variables declaration//GEN-END:variables
 }
