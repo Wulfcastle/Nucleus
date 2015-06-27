@@ -6,7 +6,9 @@
 package main;
 
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Point;
+import java.awt.Toolkit;
 import java.awt.event.MouseEvent;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
@@ -24,6 +26,9 @@ public class Dashboard extends javax.swing.JFrame {
     public Dashboard() {
         initComponents();
     }
+    
+    
+    Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();   
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -95,7 +100,12 @@ public class Dashboard extends javax.swing.JFrame {
 
         Profile.setIcon(new javax.swing.ImageIcon(getClass().getResource("/res/UI/menu/Profile-Unselected.png"))); // NOI18N
 
-        SignOut.setIcon(new javax.swing.ImageIcon(getClass().getResource("/res/UI/menu/Sign-Out.png"))); // NOI18N
+        SignOut.setIcon(new javax.swing.ImageIcon(getClass().getResource("/res/UI/menu/Logout.png"))); // NOI18N
+        SignOut.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                SignOutMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout MenuLayout = new javax.swing.GroupLayout(Menu);
         Menu.setLayout(MenuLayout);
@@ -265,11 +275,17 @@ public class Dashboard extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void SendMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SendMouseClicked
         JOptionPane.showMessageDialog(null, "Heya");
     }//GEN-LAST:event_SendMouseClicked
+
+    private void SignOutMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SignOutMouseClicked
+        new Login().setVisible(true);
+        this.setVisible(false); 
+    }//GEN-LAST:event_SignOutMouseClicked
 
     /**
      * @param args the command line arguments
