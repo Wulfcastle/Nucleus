@@ -3,8 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package main;
+
+import javax.swing.JOptionPane;
+import javax.swing.UIManager;
 
 /**
  *
@@ -135,9 +137,10 @@ public class Dashboard extends javax.swing.JFrame {
                 .addComponent(Message)
                 .addGap(51, 51, 51)
                 .addComponent(Menu, javax.swing.GroupLayout.PREFERRED_SIZE, 414, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(165, Short.MAX_VALUE))
+                .addContainerGap(176, Short.MAX_VALUE))
         );
 
+        Header.setForeground(new java.awt.Color(255, 51, 51));
         Header.setMaximumSize(new java.awt.Dimension(1240, 185));
         Header.setMinimumSize(new java.awt.Dimension(1240, 185));
 
@@ -181,6 +184,11 @@ public class Dashboard extends javax.swing.JFrame {
         Balance.setIcon(new javax.swing.ImageIcon(getClass().getResource("/res/UI/Balance.png"))); // NOI18N
 
         Send.setIcon(new javax.swing.ImageIcon(getClass().getResource("/res/UI/Send-Button.png"))); // NOI18N
+        Send.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                SendMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout ActionBarLayout = new javax.swing.GroupLayout(ActionBar);
         ActionBar.setLayout(ActionBarLayout);
@@ -235,6 +243,10 @@ public class Dashboard extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void SendMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SendMouseClicked
+        JOptionPane.showMessageDialog(null, "Heya");
+    }//GEN-LAST:event_SendMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -266,6 +278,7 @@ public class Dashboard extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new Dashboard().setVisible(true);
+
             }
         });
     }
